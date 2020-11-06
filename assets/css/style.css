@@ -1,79 +1,109 @@
-header {
-    height: 400px;
-    background-image: url(../image/header.jpg);
-    background-size: cover;
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-}
-ul{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    list-style-type: none;
-    margin: 0;
-    background-color: #EFE7CE;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    height: 50px;
-}
-nav ul li a {
-    color: #000000;
-    font-size: 20px;
-    text-decoration: none;
-}
-input{
-    border-radius: 10px;
-    font-size: 18px;
-    padding: 10px;
-}
-#home{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 20px;
-    background-color: #C5E5F2;
-    margin: 10px 500px;
-    padding: 10px;
-    border-radius: 20px;
-}
-#lineContainer{
-    display: flex;
-}
-img{
-    height: 400px;
-    width: 400px;
-}
-.description{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 20px;
-    background-color: #C5E5F2;
-    padding: 10px;
-    border-radius: 30px;
-}
-.block{
-    display: flex;
-    flex-direction: column;
-    width: 33%;
-    align-items: center;
-    text-align: center;
-}
-#iconBurger{
+  
+body{
+    background-color: #F6EDCF;
+  }
+  /*.....................Header..................*/
+  header{
+    background-image: url('../img/desert.jpg'); /* ajout de l'image de fond */
+    background-size: cover; /* la taille de l'img s'adapte (L'img est redimensionnée pour être aussi grande que possible et pour conserver ses proportions.) */
+    height: 368px; /* définition de la hauteur du header */
+    display: flex; /* définit le contexte global de boîte flexible (un container) */
+    align-items: center; /* alignement vertical des éléments contenus dans le header */
+    justify-content: center; /* alignement horizontal des éléments contenus dans le header */
+  }
+  h1{
+    font-size: 4.5em;
+  }
+  /*...................Navbar..................*/
+  ul{
+    list-style-type: none; /* enlève les puces aux items de la liste */
+    display: flex; /* définit le contexte global de boîte flexible (un container) */
+    justify-content: space-around; /* répartit équitablement les enfants (li) du container (ul) horizontalement */
+    height: 50px; /* définition de la hauteur de la liste pour centrer les li dans la navbar */
+    align-items: center; /* répartit équitablement les enfants (li) du container (ul) verticalement */
+    font-size: 1.2em; /* taille de la police */
+    font-weight: bold;
+  }
+  /* css appliqué sur les a enfants de li */
+  li > a{
+    text-decoration: none; /* suppression du texte souligné du lien */
+    color: #000000; /* couleur du texte noire */
+  }
+  /* au survol des liens et de l'icone la couleur passe blanche */
+  li > a:hover, li > .navbarIcon:hover{
+    color: #FFFFFF;
+  }
+  nav{
+    background-color: darkgrey; /* couleur de fond de la navbar */
+    margin-top: -20px; /* place la navbar collée au header */
+    height: 50px; /* définition de la heuteur de la navbar */
+  }
+  /* Sur grands écrans l'icone menu-burger est masquée */
+  li > .navbarIcon{
     display: none;
-}
-@media screen and (max-width: 480px) {
-    #iconBurger{
-        display: block;
+  }
+  /*...............Section présentation................*/
+  #presentation{
+    
+    margin: 1.5em; /* marges extérieures de la div */
+    padding: 1em; /* marges intérieures de la div */
+    background-color: #E5D0A3;
+  }
+  /*.................Blocs/card................*/
+  #blocLine{
+    display: flex; /* définit le contexte global de boîte flexible (un container) */
+  }
+  .blocTotal{
+    visibility: hidden;
+  }
+  .bloc{
+    flex-direction: column; /* les enfants de .bloc s'alignent verticalement (en colonne) */
+    text-align: center; /* les enfants de .bloc sont centrés horizontalement */
+    margin: 1.5em 0.5em; /* marges externes (y x)*/
+  }
+  p{
+    text-align: justify; /* texte des paragraphes justifié */
+  }
+  /*.................Media queries..................*/
+  /* Pour une largeur d'écran inférieure à 992px la ligne de bloc ne sera alignée horizontalement mais verticalement */
+  @media screen and (max-width: 992px){
+    #blocLine{
+      display: flex; /* définit le contexte global de boîte flexible (un container) */
+      flex-direction: column; /* les enfants de #blocLine s'alignent verticalement (en colonne) */
     }
-    nav ul li a{
-        display: none;
+  }
+  /* Pour une largeur d'écran inférieure à 680px... */
+  @media screen and (max-width: 680px){
+    /* on masque les éléments de la navbar */
+    li > a, li > form{
+      display: none;
     }
-    #home{
-        margin: 10px;
+    /* on affiche l'icone du menu-burger */
+    li > .navbarIcon{
+      display: block;
     }
-    #lineContainer{
-        flex-direction: column;
+  }
+  .blocTotal.blocAppear{
+    visibility: visible;
+   
+      animation-duration: 3s;
+      animation-name: slidein;
+  
+  }
+  
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%; 
     }
-    .block{
-        width: 100%;
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
     }
-}
+    75% {
+      font-size: 300%;
+      margin-left: 25%;
+      width: 150%;
+    }
+  }
